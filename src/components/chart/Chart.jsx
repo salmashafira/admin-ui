@@ -1,4 +1,5 @@
 import "./chart.scss";
+
 import {
   AreaChart,
   Area,
@@ -6,7 +7,7 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-} from "recharts";
+} from "recharts"; // import komponen dari chart
 
 const Chart = ({ type, aspect }) => {
   let listData;
@@ -15,7 +16,7 @@ const Chart = ({ type, aspect }) => {
     case "order":
       listData = {
         title: "Last 6 Months (Order)",
-        colorArea: "#D09CF1",
+        colorArea: "#FF66B2",
         id: "total2",
         fill: "url(#total2)",
         data: [
@@ -31,7 +32,7 @@ const Chart = ({ type, aspect }) => {
     case "earning":
       listData = {
         title: "Last 6 Months (Earning)",
-        colorArea: "#85C1E9",
+        colorArea: "#FF8000",
         id: "total1",
         fill: "url(#total1)",
         data: [
@@ -78,7 +79,7 @@ const Chart = ({ type, aspect }) => {
           <Area
             type="monotone"
             dataKey="Total"
-            stroke="#8884d8"
+            stroke="#830cbe"
             fillOpacity={1}
             fill={listData.fill}
           />

@@ -1,9 +1,9 @@
 import "./widget.scss";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp"; //icon panah ke atas
+import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined"; //icon person di user
+import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined"; //icon balance
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined"; //icon orders
+import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined"; //icon earnings
 
 const Widget = ({ type }) => {
   let data;
@@ -29,6 +29,7 @@ const Widget = ({ type }) => {
         ),
       };
       break;
+
     case "order":
       data = {
         title: "ORDERS",
@@ -45,6 +46,7 @@ const Widget = ({ type }) => {
         ),
       };
       break;
+
     case "earning":
       data = {
         title: "EARNINGS",
@@ -58,6 +60,7 @@ const Widget = ({ type }) => {
         ),
       };
       break;
+      
     case "balance":
       data = {
         title: "BALANCE",
@@ -67,8 +70,8 @@ const Widget = ({ type }) => {
           <AccountBalanceWalletOutlinedIcon
             className="icon"
             style={{
-              backgroundColor: "rgba(128, 0, 128, 0.2)",
-              color: "purple",
+              backgroundColor: "rgba(44, 108, 255, 0.2)",
+              color: "blue",
             }}
           />
         ),
@@ -87,6 +90,7 @@ const Widget = ({ type }) => {
         </div>
         <div className="link">{data.link}</div>
       </div>
+
       <div className="right">
         <div className="percentage positive">
           <KeyboardArrowUpIcon />
@@ -94,6 +98,7 @@ const Widget = ({ type }) => {
         </div>
         {data.icon}
       </div>
+      
     </div>
   );
 };
