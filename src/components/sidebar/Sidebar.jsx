@@ -20,7 +20,7 @@ const Sidebar = () => {
 
       <div className="top">
         <Link to="/">
-          <span className="logo">Salma Store</span>
+          <span className="logo">Fidela Store</span>
         </Link>
       </div>
       <hr />
@@ -35,13 +35,13 @@ const Sidebar = () => {
 
           <p className="title">LIST</p>
           <Link to="/users">
-            <li>
+            <li data-testid="users">
               <PeopleAltIcon className="icon"/>
               <span>Users</span>
             </li>
           </Link>
           <Link to="/products">
-            <li>
+            <li data-testid="products">
               <InventoryIcon className="icon"/>
               <span>Products</span>
             </li>
