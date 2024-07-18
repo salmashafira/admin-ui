@@ -20,7 +20,7 @@ const Sidebar = () => {
 
       <div className="top">
         <Link to="/">
-          <span className="logo">Fidela Store</span>
+          <span className="logo">Alma Store</span>
         </Link>
       </div>
       <hr />
