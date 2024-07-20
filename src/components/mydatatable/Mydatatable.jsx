@@ -1,8 +1,8 @@
 import "./mydatatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
-import { useEffect,useState } from "react";
-import { collection,onSnapshot,deleteDoc,doc } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { collection, onSnapshot, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase";
 
 const Mydatatable = () => {
@@ -47,7 +47,7 @@ const Mydatatable = () => {
           <div className="cellAction">
             <span
               className="deleteButton"
-              data-testid="deleteButton" 
+              data-testid="deleteButton"
               onClick={() => handleDelete(params.row.id)}
             >
               Delete
@@ -65,9 +65,11 @@ const Mydatatable = () => {
 
   return (
     <div className="mydatatable">
-      <div className="datatableTitle">
+      <div className="mydatatableTitle">
         CATEGORIES
-        <Link to="/categories/new" className="link" data-testid="add-new">Add New</Link>
+        <Link to="/categories/new" className="link" data-testid="add-new">
+          Add New
+        </Link>
       </div>
       <DataGrid
         className="datagrid"

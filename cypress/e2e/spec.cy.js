@@ -21,14 +21,25 @@ describe('template spec', () => {
 
     cy.get('div.sidebar')
       .should('be.visible')   
+    
+    //sidebar -> categories
+    cy.get('[data-testid="categories"]', {timeout: 10000}).should('be.visible').click()  
+    cy.wait(5000); //tunggu 5 detik setelah masuk ke categories
+    cy.url().should('include', '/categories'); //memastikan jika masuk ke halaman yg benar
+    cy.get('div.mydatatableTitle').contains('CATEGORIES')
 
-    //sidebar -> user
-    cy.get('[data-testid="users"]').click()  
-    cy.url().should('include', '/users'); //memastikan jika masuk ke halaman yg benar
+    //untuk klik tombol add new
+    cy.get('[data-testid="add-new"]').click()
+    cy.wait(3000) //tunggu selama 3 detik setelah menekan add new
 
-    //sidebar -> products
-    //cy.get('[data-testid="products"]').click()  
-    //cy.url().should('include', '/products'); //memastikan jika masuk ke halaman yg benar
-  
+    //menulis dessert pada placeholder yang ada
+    cy.get('input[placeholder="Coffee"]', {timeout: 10000}).should('be.visible')
+      .type('Appetizer')
+      .should('have.value', 'Appetizer')
+
+    //menekan button send 
+    cy.get('button[type="submit"]').click()  
+
+
   })
 })
