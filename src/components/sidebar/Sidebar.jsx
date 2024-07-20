@@ -1,5 +1,5 @@
 import "./sidebar.scss";
-import { Link } from "react-router-dom"; // import link untuk navigasi menu
+import { Link, useNavigate } from "react-router-dom"; // import link untuk navigasi menu
 import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard'; //icon dashboard
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt'; //icon icon
 import InventoryIcon from '@mui/icons-material/Inventory'; //icon products
@@ -10,17 +10,35 @@ import CategoryIcon from '@mui/icons-material/Category'; // icone categories
 
 import { useContext } from "react";
 import { DarkModeContext } from "../../context/darkModeContext";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase";
+import { AuthContext } from "../../context/AuthContext";
+
 
 const Sidebar = () => {
 
   const { dispatch } = useContext(DarkModeContext);
+
+  const { dispatch: authDispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        authDispatch({ type: "LOGOUT" });
+        navigate("/login");
+      })
+      .catch((error) => {
+        console.error("Logout error: ", error);
+      });
+  };
 
   return ( 
     <div className="sidebar"> 
 
       <div className="top">
         <Link to="/">
-          <span className="logo">Alma Store</span>
+          <span className="logo">Fidela Store</span>
         </Link>
       </div>
       <hr />
@@ -41,7 +59,7 @@ const Sidebar = () => {
             </li>
           </Link>
           <Link to="/products">
-            <li data-testid="products">
+            <li>
               <InventoryIcon className="icon"/>
               <span>Products</span>
             </li>
@@ -51,7 +69,7 @@ const Sidebar = () => {
             <span>Orders</span>
           </li>
           <Link to="/categories">
-            <li>
+            <li data-testid="categories">
               <CategoryIcon  className="icon"/>
               <span>Categories</span>
             </li>
@@ -62,7 +80,7 @@ const Sidebar = () => {
             <AccountCircleIcon className="icon"/>
             <span>Profile</span>
           </li>
-          <li>
+          <li onClick={handleLogout}>
             <ExitToAppIcon className="icon"/>
             <span>Logout</span>
           </li>
