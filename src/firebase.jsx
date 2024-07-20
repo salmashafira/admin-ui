@@ -11,7 +11,6 @@ const firebaseConfig = {
   storageBucket: "sisi-klien-salma-13372.appspot.com",
   messagingSenderId: "496060981860",
   appId: "1:496060981860:web:a8a71b8a04cb023b4d7571",
-  measurementId: "G-9YWCFD41TH"
 };
 
 // Initialize Firebase
