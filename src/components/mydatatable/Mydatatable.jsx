@@ -63,6 +63,19 @@ const Mydatatable = () => {
     { field: "Name", headerName: "Name", width: 130 },
   ];
 
+  const rows = [
+    { id: 1, name: "Coffe" },
+    { id: 2, name: "Non Coffe" },
+    { id: 3, name: "Cake"},
+    { id: 4, name: "Pastry"},
+    { id: 5, name: "Cookie"},
+    { id: 6, name: "Matcha",},
+    { id: 7, name: "Expresso"},
+    { id: 8, name: "Thai Tea"},
+    { id: 9, name: "Astor"},
+    { id: 10, name: "Americano"},
+  ];
+
   return (
     <div className="mydatatable">
       <div className="mydatatableTitle">

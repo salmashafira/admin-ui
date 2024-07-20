@@ -2,12 +2,13 @@ import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { collection, onSnapshot, deleteDoc, doc} from "firebase/firestore";
+import { collection, onSnapshot, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase";
 
-const Datatable = ({columns}) => {
+// eslint-disable-next-line react/prop-types
+const Datatable = ({ columns }) => {
   const location = useLocation();
-  const type = location.pathname.split('/')[1];
+  const type = location.pathname.split("/")[1];
 
   const [data, setData] = useState([]);
 
@@ -29,7 +30,7 @@ const Datatable = ({columns}) => {
     return () => {
       unsub();
     };
-  }, [type]); 
+  }, [type]);
 
   const handleDelete = async (id) => {
     try {
@@ -52,10 +53,7 @@ const Datatable = ({columns}) => {
               <span className="viewButton">View</span>
             </Link>
             <span>
-              <span
-                className="deleteButton"
-                onClick={() => handleDelete(params.row.id)}
-              >
+              <span className="deleteButton" onClick={() => handleDelete(params.row.id)}>
                 Delete
               </span>
             </span>
@@ -65,16 +63,21 @@ const Datatable = ({columns}) => {
     },
   ];
 
+// eslint-disable-next-line no-unused-vars
+const Datatable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        {type.toUpperCase()}
-        <Link to={"/" + type + "/new"} className="link">
+        Users
+        <Link to="/users/new" style={{ textDecoration: "none" }}>
           Add New
         </Link>
       </div>
-      <DataGrid className="datagrid" 
+      
+      <DataGrid
+        className="datagrid"
         rows={data}
+        // eslint-disable-next-line react/prop-types
         columns={columns.concat(actionColumn)}
         initialState={{
           pagination: {
@@ -87,5 +90,5 @@ const Datatable = ({columns}) => {
     </div>
   );
 };
-
+}
 export default Datatable;
